@@ -1,4 +1,4 @@
-## Homework with my answers (in bold)
+## Homework with my answers (in boldy)
 
 The goal of this homework is to get familiar with tools like MLflow for experiment tracking and 
 model management.
