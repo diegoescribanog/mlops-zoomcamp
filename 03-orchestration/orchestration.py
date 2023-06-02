@@ -139,7 +139,7 @@ def main_flow(train_path: str = './data/green_tripdata_2021-01.parquet',
     df_val = read_dataframe(val_path)
 
     # Transform
-    X_train, X_val, y_train, y_val, dv = add_features(df_train, df_val).result()
+    X_train, X_val, y_train, y_val, dv = add_features(df_train, df_val)
 
     # Training
     train = xgb.DMatrix(X_train, label=y_train)
@@ -147,7 +147,8 @@ def main_flow(train_path: str = './data/green_tripdata_2021-01.parquet',
     best = train_model_search(train, valid, y_val)
     train_best_model(X_train, X_val, y_train, y_val, dv, wait_for=best)
 
-# main_flow()
+#if __name__ == "__main__": 
+#    main_flow()
 
 from prefect.deployments import Deployment
 from prefect.orion.schemas.schedules import IntervalSchedule
