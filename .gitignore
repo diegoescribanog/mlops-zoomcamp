@@ -11,7 +11,7 @@ data/
 venv
 .idea
 **/artifacts/
-**/wand/
+**/wandb/
 **/models/
 **/mlruns/
 
