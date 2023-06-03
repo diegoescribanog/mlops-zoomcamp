@@ -29,7 +29,7 @@ Once you installed the package, run the command `wandb --version` and check the 
 
 What's the version that you have?
 
-**mlflow, version 0.15.3**
+**wand, version 0.15.3**
 
 # Q2. Download and preprocess the data
 
