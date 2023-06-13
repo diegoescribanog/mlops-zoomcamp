@@ -72,7 +72,7 @@ def train_best_model(
 ) -> None:
     """train a model with best hyperparams and write everything out"""
 
-    with mlflow.start_run():
+    with mlflow.start_run(): 
         train = xgb.DMatrix(X_train, label=y_train)
         valid = xgb.DMatrix(X_val, label=y_val)
 
