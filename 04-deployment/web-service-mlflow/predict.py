@@ -2,13 +2,21 @@ import os
 import pickle
 
 import mlflow
+from mlflow.tracking import MlflowClient
 from flask import Flask, request, jsonify
 
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("green-taxi-duration")
 
-RUN_ID = os.getenv('RUN_ID')
+MLFLOW_TRACKING_URI = 'http://127.0.0.1:5000'
 
-logged_model = f's3://mlflow-models-alexey/1/{RUN_ID}/artifacts/model'
-# logged_model = f'runs:/{RUN_ID}/model'
+#client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
+
+#client.download_artifacts(run_id="8cc710867a3a43849fdb317e1adefb45")
+
+logged_model = 'runs:/8cc710867a3a43849fdb317e1adefb45/model'
+
+# Load model as a PyFuncModel
 model = mlflow.pyfunc.load_model(logged_model)
 
 
@@ -36,7 +44,7 @@ def predict_endpoint():
 
     result = {
         'duration': pred,
-        'model_version': RUN_ID
+        'model_version': "8cc710867a3a43849fdb317e1adefb45"
     }
 
     return jsonify(result)
